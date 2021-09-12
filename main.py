@@ -72,7 +72,7 @@ def deal_cards(cardamount, numberofpeople):
                 print()
             linenum += 1
 
-        x += 1
+
 
     y = 0
     while y < 3:
@@ -84,3 +84,4 @@ def deal_cards(cardamount, numberofpeople):
 deal_cards(2, 2)
 print()
 print(cardlist)
+print('ANDREW is the best')

@@ -6,7 +6,6 @@ class Deal():
         pass
 
     def card_pack(self):
-
         suits = 0
         card_deck = []
         card = []
@@ -25,17 +24,41 @@ class Deal():
                     card = ['Diamonds', value]
                 card_deck.append(card)
         rd.shuffle(card_deck)
-        return (card_deck)
+        return card_deck
 
     def start_game(self):
-        x = 0
-        while x == 0:
-            x = int(input('Do you want to play a game of BlackJack? '))
-            if x == 0:
-                print('Your account has been loaded with 20 chips. Good luck.')
-                player1_account = 20
-                return player1_account
-            else:
-                print('Goodbye')
-                player1_account = 0
-                return player1_account
+
+        #Prompt for user input.
+        userInput = input('Do you want to play a game of BlackJack? y/n ')
+        userInput = userInput.lower()
+
+        #Validate input.
+        while userInput not in ['y', 'n']:
+            print('Invalid input. Try again.')
+            userInput = input('Do you want to play a game of BlackJack? y/n ')
+            userInput = userInput.lower()
+
+        if userInput == 'y':
+            print('Your account has been loaded with 20 chips. Good luck.')
+            player1_account = 20
+            return player1_account
+        if userInput == 'n':
+            print('Goodbye')
+            exit()
+
+    def card(self,deck,x):
+        card = ''
+        if deck[x][1] == 11:
+            card = 'Jack'
+        elif deck[x][1] == 12:
+            card = 'Queen'
+        elif deck[x][1] == 13:
+            card = 'King'
+        elif deck[x][1] == 14:
+            card = 'Ace'
+        else:
+            card = deck[x][1]
+        card = str(deck[x][1]) + ' ' + deck[x][0]
+        print(card)
+        x += 1
+        return (deck[x][1], x)
